@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
@@ -19,7 +20,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     LosComponent,
     DropdownDirective,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, GoogleMapsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
