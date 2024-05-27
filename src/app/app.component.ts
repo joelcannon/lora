@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Feature } from './feature.enum';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lora';
+  selectedFeature = Feature.Map;
+  Feature = Feature;
+
+  switchView(selectedFeature: Feature) {
+    this.selectedFeature = selectedFeature;
+  }
 }

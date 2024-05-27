@@ -1,1 +1,50 @@
-<p>header works!</p>
+<div class="navbar navbar-light bg-light navbar-expand-md">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggler"
+        (click)="collapsed = !collapsed"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a routerLink="/" class="navbar-brand">Surveyor</a>
+    </div>
+    <div
+      class="navbar-collapse"
+      [class.collapse]="collapsed"
+      (window:resize)="collapsed = true"
+    >
+      <ul class="nav navbar-nav">
+        <li class="me-3">
+          <a href="#" (click)="onSelected(Feature.Map)">Map</a>
+        </li>
+        <li class="me-3">
+          <a href="#" (click)="onSelected(Feature.Stations)">Stations</a>
+        </li>
+        <li class="me-3">
+          <a href="#" (click)="onSelected(Feature.Nodes)">Nodes</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav ms-auto">
+        <li class="dropdown" appDropdown>
+          <button
+            class="btn dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            User
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Other</a></li>
+            <li role="separator" class="dropdown-divider"></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

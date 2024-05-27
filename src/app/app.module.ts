@@ -7,9 +7,18 @@ import { MapComponent } from './map/map.component';
 import { StationsComponent } from './stations/stations.component';
 import { NodesComponent } from './nodes/nodes.component';
 import { LosComponent } from './los/los.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, MapComponent, StationsComponent, NodesComponent, LosComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    MapComponent,
+    StationsComponent,
+    NodesComponent,
+    LosComponent,
+    DropdownDirective,
+  ],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
