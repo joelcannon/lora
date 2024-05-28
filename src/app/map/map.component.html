@@ -1,6 +1,10 @@
 <google-map
-  height="400px"
-  width="100%"
-  [center]="center"
-  [zoom]="zoom"
+  #map
+  [center]="mapData?.center"
+  [zoom]="mapData?.zoom"
+  [mapTypeId]="mapData?.mapTypeId"
+  ><google-map-marker
+    *ngFor="let station of mapData?.stations"
+    [position]="station.position"
+  ></google-map-marker
 ></google-map>

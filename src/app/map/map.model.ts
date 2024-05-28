@@ -1,7 +1,8 @@
-export class Map {
+export class MapModel {
   constructor(
-    public id: string,
-    public name: string,
-    public zoom: number
+    public center: google.maps.LatLngLiteral = { lat: 40, lng: -100 },
+    public zoom: number = 5,
+    public mapTypeId: google.maps.MapTypeId = google.maps.MapTypeId.TERRAIN,
+    public stations: google.maps.marker.AdvancedMarkerElement[] = []
   ) {}
 }

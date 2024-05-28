@@ -1,19 +1,38 @@
-import { Component } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+// import { GoogleMap } from '@angular/google-maps';
+import { MapService } from './map.service';
+import { MapModel } from './map.model'; // Adjust the path as needed
+import { GoogleMap } from '@angular/google-maps';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrl: './map.component.css',
+  styleUrls: ['./map.component.css'],
 })
-export class MapComponent {
-  center: google.maps.LatLngLiteral = { lat: 24, lng: 12 };
-  zoom = 4;
+export class MapComponent implements AfterViewInit {
+  // @ViewChild(GoogleMap) mapComponent: GoogleMap;
+  // @ViewChild('map') mapComponent: GoogleMap;
+  @ViewChild(GoogleMap, { static: false }) mapComponent: GoogleMap;
 
-  // constructor() {
-  //   // Optionally, you can load the API key dynamically
-  //   const script = document.createElement('script');
-  //   script.src = `https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsApiKey}`;
-  //   document.head.appendChild(script);
+  mapData?: MapModel;
+
+  constructor(public mapService: MapService) {
+    this.mapData = this.mapService.getMapData();
+  }
+
+  ngAfterViewInit(): void {
+    this.mapService.map = this.mapComponent.googleMap;
+    console.log('inside ngAfterViewInit', this.mapComponent.googleMap); // Should not be undefined
+    this.mapService.setMap(this.mapComponent.googleMap);
+    this.mapService.updateMap();
+
+    this.mapComponent.mapInitialized.subscribe((map: google.maps.Map) => {
+      this.mapService.setMap(this.mapComponent.googleMap);
+      this.mapService.updateMap();
+    });
+  }
+
+  // onMapsInitialized() {
+  //   this.mapService.applyMapConfiguration();
   // }
 }
