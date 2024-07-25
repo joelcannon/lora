@@ -1,31 +1,6 @@
-<!-- <app-header (selectedFeatureEvent)="switchView($event)"></app-header>
+<app-header (selectedFeatureEvent)="switchView($event)"></app-header>
 <div class="container pull-left">
   <app-map *ngIf="selectedFeature === Feature.Map"></app-map>
   <app-stations *ngIf="selectedFeature === Feature.Stations"></app-stations>
   <app-nodes *ngIf="selectedFeature === Feature.Nodes"></app-nodes>
-</div> -->
-
-<!-- app.component.html -->
-
-<h1>Google Maps in Angular 17</h1>
-<google-map height="600px" width="800px" [options]="options">
-  @for (location of nzLocations; track location; let index = $index) {
-    <map-advanced-marker
-      #markerElem="mapAdvancedMarker"
-      [position]="{ lat: location.lat, lng: location.lng }"
-      [content]="location.content"
-      [title]="'Location ' + (index + 1)"
-      (mapClick)="onMarkerClick(markerElem)"
-    />
-  }
-  @for (location of auLocations; track location; let index = $index) {
-    <map-advanced-marker
-      #markerElem="mapAdvancedMarker"
-      [position]="{ lat: location.lat, lng: location.lng }"
-      [content]="location.content"
-      [title]="'Location ' + (index + 1)"
-      (mapClick)="onMarkerClick(markerElem)"
-    />
-  }
-  <map-info-window #infoWindow></map-info-window>
-</google-map>
+</div>
